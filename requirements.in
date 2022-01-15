@@ -1,0 +1,4 @@
+fastapi==0.71.0
+pip-tools==6.4.0
+uvicorn[standard]==0.17.0
+requests==2.27.1
