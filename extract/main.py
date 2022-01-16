@@ -5,9 +5,9 @@ import time
 
 
 class Extract():
-    numbers = open('numbers.csv', 'a')
+    numbers = open('numbers.csv', 'w')
     count = 1
-    # while count <= 2:
+    # while count <= 20:
     while True:
         list_numbers = []
         response = requests.get(
@@ -23,7 +23,7 @@ class Extract():
             else:
                 print('Empty page')
                 break
-        
+
         list_numbers.extend(numbers_dic.get('numbers'))
         for number in list_numbers:
             numbers.write(f'{str(number)}\n')
@@ -31,4 +31,3 @@ class Extract():
 
         # Controle the time of requisitions
         # time.sleep(1)
-    print(f'Final page: {count}')

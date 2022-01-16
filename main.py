@@ -1,15 +1,13 @@
-import requests
-import codecs
-import json
 
-response = requests.get(
-    f'http://challenge.dienekes.com.br/api/numbers?page={10000}')
-valor = codecs.decode(response.content, 'UTF-8')
+lista1 = [12, 14, 6, 32, 9, 0, 1, 24, 8, 14]
 
-outro_valor = json.loads(valor)
-
-
-if not outro_valor.get('numbers'):
-    print('Lista Vazia')
-else:
-    print('Lista Cheia')
+lista2 = []
+for numero in lista1:
+    for chave, valor in enumerate(lista2):
+        print(chave, valor)
+        if numero < valor:
+            lista2.insert(chave, numero)
+            break
+    else:
+        lista2.append(numero)
+    print("Lista atual:", lista2)
