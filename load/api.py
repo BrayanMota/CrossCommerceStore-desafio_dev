@@ -1,9 +1,9 @@
-from fastapi import FastAPI
+from fastapi import APIRouter
 
-app = FastAPI()
+load_router = APIRouter(tags=['Load'])
 
 
-@app.get('/load/order/numbers')
+@load_router.get('/load/order/numbers')
 def load_order_numbers():
-    numbers = open('numbers.csv', 'r')
-    return numbers
+    numbers = open('numbers_in_order.csv', 'r')
+    return numbers.readlines()

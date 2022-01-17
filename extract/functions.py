@@ -4,17 +4,21 @@ import json
 import time
 
 
-class Extract():
+def extract():
     numbers = open('numbers.csv', 'w')
     count = 1
-    # while count <= 20:
-    while True:
+    # while True:
+    while count >= 10:
+        # try:
+        #     pass
+        # except:
+        #     pass
         list_numbers = []
         response = requests.get(
             f'http://challenge.dienekes.com.br/api/numbers?page={count}')
         response_str = codecs.decode(response.content, 'UTF-8')
         numbers_dic = json.loads(response_str)
-
+        
         print(f'Page: {count}')
         if not numbers_dic.get('numbers'):
             if response.status_code == 500:
@@ -23,7 +27,7 @@ class Extract():
             else:
                 print('Empty page')
                 break
-
+        
         list_numbers.extend(numbers_dic.get('numbers'))
         for number in list_numbers:
             numbers.write(f'{str(number)}\n')
@@ -31,3 +35,5 @@ class Extract():
 
         # Controle the time of requisitions
         # time.sleep(1)
+
+    return 'All pages extracts'

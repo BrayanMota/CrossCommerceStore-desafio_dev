@@ -1,13 +1,11 @@
+from extract.api import extract_router
+from transform.api import transform_router 
+from load.api import load_router
 
-lista1 = [12, 14, 6, 32, 9, 0, 1, 24, 8, 14]
+from fastapi import FastAPI
 
-lista2 = []
-for numero in lista1:
-    for chave, valor in enumerate(lista2):
-        print(chave, valor)
-        if numero < valor:
-            lista2.insert(chave, numero)
-            break
-    else:
-        lista2.append(numero)
-    print("Lista atual:", lista2)
+app = FastAPI()
+
+app.include_router(extract_router)
+app.include_router(transform_router)
+app.include_router(load_router)
