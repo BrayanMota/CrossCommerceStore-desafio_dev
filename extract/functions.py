@@ -1,15 +1,15 @@
 import requests
 import codecs
 import json
-import time
 
 
 def extract():
     try:
         numbers = open('numbers.csv', 'w')
         count = 1
-        # while True:
-        while count <= 100:
+        have_numbers = True
+        # while have_numbers:
+        while count <= 50:
             list_numbers = []
             response = requests.get(
                 f'http://challenge.dienekes.com.br/api/numbers?page={count}')
@@ -23,19 +23,20 @@ def extract():
                     continue
                 else:
                     print('Empty page')
-                    break
+                    have_numbers = False
 
             list_numbers.extend(numbers_dic.get('numbers'))
             for number in list_numbers:
                 numbers.write(f'{str(number)}\n')
             count += 1
 
-            # Controle the time of requisitions
-            # time.sleep(1)
         numbers.close()
 
-        numbers = open('numbers.csv')
-        return numbers.readlines()
-        # return 'All pages copied'
+        return read_numbers()
     except Exception as e:
         raise e
+
+
+def read_numbers():
+    numbers = open('numbers.csv')
+    return numbers.readlines()

@@ -12,6 +12,8 @@ autopep8==1.6.0
     # via -r .\requirements-dev.in
 colorama==0.4.4
     # via pytest
+coverage[toml]==6.2
+    # via pytest-cov
 iniconfig==1.1.1
     # via pytest
 packaging==21.3
@@ -25,8 +27,14 @@ pycodestyle==2.8.0
 pyparsing==3.0.6
     # via packaging
 pytest==6.2.5
+    # via
+    #   -r .\requirements-dev.in
+    #   pytest-cov
+pytest-cov==3.0.0
     # via -r .\requirements-dev.in
 toml==0.10.2
     # via
     #   autopep8
     #   pytest
+tomli==2.0.0
+    # via coverage
