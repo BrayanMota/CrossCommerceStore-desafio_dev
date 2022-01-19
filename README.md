@@ -44,4 +44,4 @@ http://127.0.0.1:8000/v1/transform
 
 ### Load
 
-http://127.0.0.1:8000/v1/load
+http://127.0.0.1:8000/v1/load?page=page&size=size

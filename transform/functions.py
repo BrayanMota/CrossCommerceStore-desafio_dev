@@ -1,23 +1,43 @@
-import os
+import time
+
+
+def quick_sort(lista):
+
+    list_greatest = []
+    list_minors = []
+
+    if len(lista) <= 1:
+        return lista
+
+    pivo = lista.pop()
+
+    # Using list comprehension
+    # [list_minors.append(item) if item < pivo else list_greatest.append(item) for item in lista]
+
+    for item in lista:
+        if item < pivo:
+            list_minors.append(item)
+        else:
+            list_greatest.append(item)
+
+    return quick_sort(list_minors) + [pivo] + quick_sort(list_greatest)
 
 
 def transform():
     try:
-        numbers = open('numbers.csv', 'r')
-        numbers_in_order = open('numbers_in_order.csv', 'w')
         lista = []
-        i = 1
-        for number in numbers:
-            print(f'Number {number}')
-            for key, value in enumerate(lista):
-                if number < value:
-                    lista.insert(key, number)
-                    break
-            else:
+        with open('numbers.csv', 'r') as numbers:
+            for number in numbers:
                 lista.append(number)
 
-        for number in lista:
-            numbers_in_order.write(f'{str(number)}')
-        return 'All numbers sorted'
+        start = time.time()
+        values = quick_sort(lista)
+        end = time.time()
+
+        with open('numbers_in_order.csv', 'w') as numbers_in_order:
+            for value in values:
+                numbers_in_order.write(f'{str(value)}')
+
+        return f'Took {end - start} seconds to sort all numbers.'
     except Exception as e:
         raise e
