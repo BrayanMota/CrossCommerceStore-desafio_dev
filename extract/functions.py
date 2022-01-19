@@ -8,8 +8,7 @@ def extract():
         numbers = open('numbers.csv', 'w')
         count = 1
         have_numbers = True
-        # while have_numbers:
-        while count <= 50:
+        while have_numbers:
             list_numbers = []
             response = requests.get(
                 f'http://challenge.dienekes.com.br/api/numbers?page={count}')

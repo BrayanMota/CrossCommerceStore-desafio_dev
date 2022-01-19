@@ -28,20 +28,3 @@ def test_extract_no_numbers():
     numbers_dic = json.loads(response_str)
 
     assert numbers_dic.get('numbers') == []
-
-
-# TODO Arrumar para funcionar o teste
-# def test_extract_handling_error_500():
-#     count = 1
-#     simulated_error = False
-#     while count <= 100 or simulated_error == True:
-#         response = requests.get(
-#             f'http://challenge.dienekes.com.br/api/numbers?page={count}')
-
-#         print(f'Page: {count}')
-#         if response.status_code == 500:
-#             print(f'Page Interruped: {count}')
-#             simulated_error == True
-#         count += 1
-
-#     assert response.status_code == 500
