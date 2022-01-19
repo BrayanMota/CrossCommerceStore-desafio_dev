@@ -1,13 +1,14 @@
-from shutil import ExecError
+import os
 
 
 def transform():
     try:
         numbers = open('numbers.csv', 'r')
         numbers_in_order = open('numbers_in_order.csv', 'w')
-
         lista = []
+        i = 1
         for number in numbers:
+            print(f'Number {number}')
             for key, value in enumerate(lista):
                 if number < value:
                     lista.insert(key, number)

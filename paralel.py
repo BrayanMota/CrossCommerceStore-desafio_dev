@@ -3,6 +3,7 @@ import json
 import asyncio
 import aiohttp
 import time
+import os
 
 
 page_errors = []
@@ -36,6 +37,8 @@ async def get(url, session):
 
 async def main():
     pages = 10000
+    if os.path.exists('numbers.csv'):
+        os.remove('numbers.csv')
     async with aiohttp.ClientSession() as session:
         await asyncio.gather(*[get(f'http://challenge.dienekes.com.br/api/numbers?page={page+1}', session) for page in range(pages)])
         while page_errors:
