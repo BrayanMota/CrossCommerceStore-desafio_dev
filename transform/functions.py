@@ -13,6 +13,9 @@ def quick_sort(lista):
 
     # Using list comprehension
     # [list_minors.append(item) if item < pivo else list_greatest.append(item) for item in lista]
+    
+    # Optei por não utilizar dessa forma, pois em testes feitos na minha máquina, teve uma certa diferença de
+    # tempo para a ordenação de todos os valores.
 
     for item in lista:
         if item < pivo:
